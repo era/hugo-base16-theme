@@ -8,7 +8,9 @@
   {{ $paginator := .Paginate (where .Site.Pages "Section" "posts") }}
   <div class="article-list">
     {{ range $paginator.Pages }}
-      {{ partial "article-list-item.html" . }}
+      {{ if not (eq .Title "Posts") }}
+        {{ partial "article-list-item.html" . }}
+      {{end}}
     {{ end }}
   </div>
 
